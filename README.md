@@ -1,11 +1,11 @@
+# Flask Translation App
+
+This is a simple language translation web application built with **Flask**, allowing users to translate text to various languages using the Deep Translate API. The app also includes an interactive translation quiz to test users' translation skills with pre-defined phrases.
 
 ## Table of Contents
 - [Installation](#installation)
 - [Usage](#usage)
 - [API Setup](#api-setup)
-- [App Code](#app-code)
-- [HTML Templates](#html-templates)
-- [License](#license)
 
 ## Installation
 
