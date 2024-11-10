@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phrases</title>
+    <style>
+        .correct { background-color: green; }
+        .incorrect { background-color: red; }
+        .button { margin: 5px; padding: 10px; }
+        .result { margin-top: 20px; font-size: 20px; }
+    </style>
+</head>
+<body>
+    <h1>Translate the phrase:</h1>
+    <h2>{{ translated_phrase }}</h2>
+    <div id="options">
+        {% for option in options %}
+            <button class="button" onclick="checkTranslation(this, '{{ correct_answer }}')">{{ option }}</button>
+        {% endfor %}
+    </div>
+
+    <div class="result" id="result"></div>
+    <button id="try-again" style="display:none;" onclick="location.reload();">Try Again</button>
+
+    <script>
+        function checkTranslation(selectedButton, correct) {
+            const resultDiv = document.getElementById("result");
+            const buttons = document.querySelectorAll(".button");
+            let correctAnswerText = '';
+
+            // Disable all buttons after selection
+            buttons.forEach(button => {
+                button.disabled = true;
+                if (button.innerText.trim() === correct.trim()) {
+                    correctAnswerText = button.innerText;
+                }
+            });
+
+            // Check if the answer is correct
+            if (selectedButton.innerText.trim() === correct.trim()) {
+                selectedButton.classList.add('correct');
+                resultDiv.textContent = "Correct! Well done!";
+            } else {
+                selectedButton.classList.add('incorrect');
+                resultDiv.textContent = "Incorrect! The correct answer was: " + correctAnswerText;
+            }
+
+            // Show the "Try Again" button
+            document.getElementById("try-again").style.display = "block";
+        }
+    </script>
+</body>
+</html>
